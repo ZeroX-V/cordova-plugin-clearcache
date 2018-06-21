@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.chinact.mobile.plugin.clearcache" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>ClearCache</name>
+	<js-module name="ClearCache" src="www/ClearCache.js">
+		<clobbers target="navigator.clearCache" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="ClearCache">
+				<param name="android-package" value="com.chinact.mobile.plugin.clearcache.ClearCache" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+		</config-file>
+		<source-file src="src/android/ClearCache.java" target-dir="src/com/chinact/mobile/plugin/clearcache" />
+	</platform>
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+			<feature name="ClearCache">
+				<param name="ios-package" value="ClearCache" />
+			</feature>
+		</config-file>
+		<source-file src="src/ios/ClearCache.h" />
+		<source-file src="src/ios/ClearCache.m" />
+	</platform>
+</plugin>
